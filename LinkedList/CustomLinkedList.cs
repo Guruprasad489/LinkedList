@@ -13,9 +13,9 @@ namespace LinkedList
         public void AddLast(int data)
         {
             Node newNode = new Node(data);
-            if (this.head == null)
+            if (this.head == null)                
             {
-                this.head = newNode;
+                this.head = newNode;                
             }
             else
             {
@@ -32,6 +32,14 @@ namespace LinkedList
                 temp = temp.next;   
             }
             return temp;
+        }
+
+        public void AddFirst(int data)
+        {
+            Node newNode = new Node(data);
+            newNode.next = this.head;
+            this.head = newNode;
+            Console.WriteLine("{0} is inserted into LinkedList", newNode.data);
         }
         public void Display()
         {
