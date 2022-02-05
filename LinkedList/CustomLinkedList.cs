@@ -29,7 +29,7 @@ namespace LinkedList
             Node temp = this.head;
             while (temp.next != null)
             {
-                temp = temp.next;   
+                temp = temp.next;
             }
             return temp;
         }
@@ -44,6 +44,29 @@ namespace LinkedList
         public void Append(int data)
         {
             AddLast(data);              //Append is same as AddLast
+        }
+
+        public void Insert(int index, int data)
+        {
+            Node newNode = new Node(data);
+            if (index < 0)
+            {
+                Console.WriteLine("Invaid index position");
+            }
+            else if (index == 0)
+            {
+                AddFirst(data);
+            }
+            else
+            {
+                Node temp = this.head;
+                for (int i = 0; i < index-1; i++)
+                {
+                    temp = temp.next;
+                }
+                newNode.next = temp.next;
+                temp.next = newNode;
+            }
         }
 
         public void Display()
