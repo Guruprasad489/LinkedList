@@ -66,7 +66,7 @@ namespace LinkedList
                 }
                 newNode.next = temp.next;
                 temp.next = newNode;
-                Console.WriteLine("Inserted {0} at {1} position",newNode.data, index);
+                Console.WriteLine("\nInserted {0} at index {1}",newNode.data, index);
             }
         }
 
@@ -113,7 +113,37 @@ namespace LinkedList
                 Console.WriteLine("\n{0} is not present in the linkedlist", data);
         }
 
-        public void Display()
+        public int FindPosition(int value)
+        {
+            Node temp = head;
+            int index = 0;
+            while (temp != null)
+            {
+                if (temp.data == value)
+                {
+                    return index;
+                }
+                temp = temp.next;
+                index++;
+            }
+            return -1;
+        }
+
+        public void InsertAfter(int value, int data)
+        {
+            Node temp = head;
+            while (temp != null)
+            {
+                if (temp.data == value)
+                {
+                    int position = FindPosition(value);
+                    Insert(position+1, data);
+                }
+                temp = temp.next;
+            }
+        }
+
+            public void Display()
         {
             Console.WriteLine("Displaying Nodes:");
             Node temp = this.head;
